@@ -1,12 +1,19 @@
 import styled from "styled-components";
 import colors from "styles/colors";
 
+import {
+  spacingInlineXxs,
+  spacingInlineXs,
+  spacingInlineLg,
+  fontSizeXxs,
+} from "styles/tokens";
+
 export const Wrapper = styled.div`
   align-items: center;
   background-color: ${colors.red};
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: ${spacingInlineLg};
   max-width: 1033px;
   width: 100%;
 
@@ -19,14 +26,14 @@ export const Wrapper = styled.div`
 
 export const Label = styled.p`
   color: ${colors.textWhite};
-  font-size: 14px;
-  margin-bottom: 16px;
+  font-size: ${fontSizeXxs};
+  margin-bottom: ${spacingInlineXs};
   text-align: center;
   text-transform: uppercase;
   width: 100%;
 
   @media (max-width: 768px) {
-    margin-bottom: 8px;
+    margin-bottom: ${spacingInlineXxs};
     text-align: left;
   }
 `;
