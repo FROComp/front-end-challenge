@@ -6,6 +6,7 @@ import {
   spacingInlineXxs,
   spacingInlineXs,
   fontSizeXs,
+  fontWeightBold,
 } from "styles/tokens";
 
 interface IButtonProps {
@@ -26,7 +27,7 @@ export const Button = styled.button<IButtonProps>`
   line-height: 24px;
   padding: ${spacingInlineXxs} ${spacingInlineXs};
   font-size: ${fontSizeXs};
-  font-weight: 700;
+  font-weight: ${fontWeightBold};
 
   @media (max-width: 768px) {
     padding: 6px ${spacingInlineXs};
