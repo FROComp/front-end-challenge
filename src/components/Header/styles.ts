@@ -9,7 +9,6 @@ export const Wrapper = styled.header`
   overflow: hidden;
   padding: 0 112px;
   width: 100vw;
-  position: fixed;
 
   img {
     width: 185px;
