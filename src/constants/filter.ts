@@ -1,6 +1,6 @@
 export const FILTER = {
   PAGE: "page",
   GENRER: "genresIds",
-  MAXPAGES: "maxpages",
+  MAXPAGES: "maxPages",
   WITHGENRES: "with_genres",
 };
