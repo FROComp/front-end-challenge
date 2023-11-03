@@ -7,14 +7,13 @@ import * as S from "./styles";
 import arrowLeft from "assets/arrow-left.svg";
 import arrowRight from "assets/arrow-right.svg";
 
-const maxPages = 100;
 const range = 5;
 
 const Pagination: React.FC = () => {
   const { filters, handleSetPageFilter } = useMoviesContext();
 
   const handleChangePage = (page: number) => {
-    if (page < 1 || page > maxPages) return;
+    if (page < 1 || page > filters.maxPages) return;
     handleSetPageFilter(page);
   };
 
@@ -34,8 +33,8 @@ const Pagination: React.FC = () => {
   };
 
   const pages = useMemo(
-    () => arrayRange(filters.page, maxPages),
-    [filters.page, maxPages]
+    () => arrayRange(filters.page, filters.maxPages),
+    [filters.page, filters.maxPages]
   );
 
   return (
@@ -58,13 +57,13 @@ const Pagination: React.FC = () => {
           {page}
         </S.PaginationButton>
       ))}
-      {filters.page < maxPages && (
+      {filters.page < filters.maxPages && (
         <S.PaginationButton onClick={() => handleChangePage(filters.page + 1)}>
           <img src={arrowRight} alt="Próxima página" />
         </S.PaginationButton>
       )}
-      {filters.page + 2 < maxPages && (
-        <S.AroundButton onClick={() => handleChangePage(maxPages)}>
+      {filters.page + 2 < filters.maxPages && (
+        <S.AroundButton onClick={() => handleChangePage(filters.maxPages)}>
           Última
         </S.AroundButton>
       )}
