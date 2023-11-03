@@ -7,7 +7,7 @@ import { useMoviesContext } from "contexts/movies.context";
 import * as S from "./styles";
 
 const FilterBar: React.FC = () => {
-  const { genres } = useMoviesContext();
+  const { genres, filters, handleSetGenresFilter } = useMoviesContext();
 
   return (
     <S.Wrapper>
@@ -15,11 +15,10 @@ const FilterBar: React.FC = () => {
       <S.ButtonsContainer>
         {genres.map((genre) => (
           <FilterButton
+            {...genre}
             key={genre.id}
-            id={genre.id}
-            name={genre.name}
-            isSelected={false}
-            handleClick={() => null}
+            isSelected={filters.genresIds.includes(genre.id)}
+            handleClick={handleSetGenresFilter}
           />
         ))}
       </S.ButtonsContainer>
