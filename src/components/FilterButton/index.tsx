@@ -5,19 +5,21 @@ import close from "assets/close-circle.svg";
 import * as S from "./styles";
 
 interface IFilterButtonProps {
-  label: string;
+  id: number;
+  name: string;
   isSelected: boolean;
-  onClick: () => void;
+  handleClick: (id: number) => void;
 }
 
 const FilterButton: React.FC<IFilterButtonProps> = ({
-  label,
+  id,
+  name,
   isSelected,
-  onClick,
+  handleClick,
 }) => {
   return (
-    <S.Button $isSelected={isSelected} onClick={onClick}>
-      {label}
+    <S.Button $isSelected={isSelected} onClick={() => handleClick(id)}>
+      {name}
       {isSelected && <img src={close} alt="Botão de fechar" />}
     </S.Button>
   );
