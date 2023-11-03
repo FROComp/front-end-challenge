@@ -40,15 +40,19 @@ const MoviesProvider: React.FunctionComponent<{
     if (page) actions.handleSetFilter("page", parseInt(page));
   };
 
-  const handleUpdateSearchParams = () => {
+  const handleUpdateSearchParams = (page?: number) => {
     const { filters } = state;
     const params: any = {};
 
     if (filters.genresIds.length > 0) {
       params.with_genres = filters.genresIds;
+      params.page = filters.page;
     }
 
-    params.page = filters.page;
+    if (page) {
+      actions.handleSetFilter("page", page);
+      params.page = page;
+    }
 
     navigate({
       pathname: window.location.pathname,
@@ -65,10 +69,10 @@ const MoviesProvider: React.FunctionComponent<{
 
   const handleSetPageFilter = (page: number) => {
     actions.handleSetFilter("page", page);
+    handleUpdateSearchParams(page);
   };
 
   // Services
-
   const handleGetGenres = async () => {
     await getGenrersService()
       .then((response) => actions.handleSetGenders(response.data.genres))
@@ -76,7 +80,6 @@ const MoviesProvider: React.FunctionComponent<{
   };
 
   // Effects
-
   useEffect(() => {
     handleLoadStatesFromParams();
     handleGetGenres();

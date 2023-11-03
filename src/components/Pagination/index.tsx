@@ -1,4 +1,6 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
+
+import { useMoviesContext } from "contexts/movies.context";
 
 import * as S from "./styles";
 
@@ -9,11 +11,11 @@ const maxPages = 100;
 const range = 5;
 
 const Pagination: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const { filters, handleSetPageFilter } = useMoviesContext();
 
   const handleChangePage = (page: number) => {
     if (page < 1 || page > maxPages) return;
-    setCurrentPage(page);
+    handleSetPageFilter(page);
   };
 
   const arrayRange = (start: number, stop: number) => {
@@ -32,36 +34,36 @@ const Pagination: React.FC = () => {
   };
 
   const pages = useMemo(
-    () => arrayRange(currentPage, maxPages),
-    [currentPage, maxPages]
+    () => arrayRange(filters.page, maxPages),
+    [filters.page, maxPages]
   );
 
   return (
     <S.Wrapper>
-      {currentPage > 2 && (
+      {filters.page > 2 && (
         <S.AroundButton onClick={() => handleChangePage(1)}>
           Primeira
         </S.AroundButton>
       )}
-      {currentPage > 1 && (
-        <S.PaginationButton onClick={() => handleChangePage(currentPage - 1)}>
+      {filters.page > 1 && (
+        <S.PaginationButton onClick={() => handleChangePage(filters.page - 1)}>
           <img src={arrowLeft} alt="Próxima anterior" />
         </S.PaginationButton>
       )}
       {pages.map((page) => (
         <S.PaginationButton
-          $isSelected={currentPage === page}
+          $isSelected={filters.page === page}
           onClick={() => handleChangePage(page)}
         >
           {page}
         </S.PaginationButton>
       ))}
-      {currentPage < maxPages && (
-        <S.PaginationButton onClick={() => handleChangePage(currentPage + 1)}>
+      {filters.page < maxPages && (
+        <S.PaginationButton onClick={() => handleChangePage(filters.page + 1)}>
           <img src={arrowRight} alt="Próxima página" />
         </S.PaginationButton>
       )}
-      {currentPage + 2 < maxPages && (
+      {filters.page + 2 < maxPages && (
         <S.AroundButton onClick={() => handleChangePage(maxPages)}>
           Última
         </S.AroundButton>
