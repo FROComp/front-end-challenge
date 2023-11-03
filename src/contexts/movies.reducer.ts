@@ -41,7 +41,7 @@ export const allActions = (dispatch: DispatchType) => ({
     }),
   handleSetGenders: (genders: IGenres[]) =>
     dispatch({
-      type: MoviesTypes.MOVIES_LOADING,
+      type: MoviesTypes.SET_GENDERS,
       payload: genders,
     }),
 });
