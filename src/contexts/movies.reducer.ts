@@ -7,33 +7,53 @@ type Actions = {
   payload: any;
 };
 
+export type IGenres = {
+  id: number;
+  name: string;
+};
+
 export type MoviesContextType = {
-  isLoading: boolean;
+  contentIsLoading: boolean;
+  moviesIsLoading: boolean;
+  genres: IGenres[];
 };
 
 export enum MoviesTypes {
-  GET_LOADING = "GET_LOADING",
-  SET_TAB = "SET_TAB",
-  SET_DATA = "SET_DATA",
-  SET_FILTER_OPTION = "SET_FILTER_OPTION",
-  TOGGLE_FILTER_DRAWER = "TOGGLE_FILTER_DRAWER",
+  CONTENT_LOADING = "CONTENT_LOADING",
+  MOVIES_LOADING = "MOVIES_LOADING",
+  SET_GENDERS = "SET_GENDERS",
 }
 
 export const moviesInitialState = {
-  isLoading: false,
+  contentIsLoading: false,
+  moviesIsLoading: false,
+  genres: [],
 };
 
 export const allActions = (dispatch: DispatchType) => ({
-  handleToggleGetLoading: () =>
+  handleToggleContentLoading: () =>
     dispatch({
-      type: MoviesTypes.GET_LOADING,
+      type: MoviesTypes.CONTENT_LOADING,
+    }),
+  handleToggleMoviesLoading: () =>
+    dispatch({
+      type: MoviesTypes.MOVIES_LOADING,
+    }),
+  handleSetGenders: (genders: IGenres[]) =>
+    dispatch({
+      type: MoviesTypes.MOVIES_LOADING,
+      payload: genders,
     }),
 });
 
 function reducer(state = moviesInitialState, action: Actions): any {
   switch (action.type) {
-    case MoviesTypes.GET_LOADING:
-      return { ...state, isLoading: !state.isLoading };
+    case MoviesTypes.CONTENT_LOADING:
+      return { ...state, contentIsLoading: !state.contentIsLoading };
+    case MoviesTypes.MOVIES_LOADING:
+      return { ...state, moviesIsLoading: !state.moviesIsLoading };
+    case MoviesTypes.SET_GENDERS:
+      return { ...state, genres: action.payload };
 
     default:
       return state;
