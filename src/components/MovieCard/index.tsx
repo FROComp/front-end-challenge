@@ -2,8 +2,9 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
+import { formatDateToText } from "utils/formatDate";
+
 import * as S from "./styles";
-import formatDate from "utils/formatDate";
 
 interface IMovieCardProps {
   id: number;
@@ -38,7 +39,7 @@ const MovieCard: React.FC<IMovieCardProps> = ({
       </S.ImageContent>
       <S.TextContent>
         <S.Title>{title}</S.Title>
-        <S.ReleaseDate>{formatDate(release)}</S.ReleaseDate>
+        <S.ReleaseDate>{formatDateToText(release)}</S.ReleaseDate>
       </S.TextContent>
     </S.Box>
   );
