@@ -1,4 +1,11 @@
-import React, { createContext, useReducer, useContext, useEffect } from "react";
+import React, {
+  createContext,
+  useReducer,
+  useContext,
+  useEffect,
+  ComponentProps,
+  ComponentType,
+} from "react";
 
 import { useParams } from "react-router-dom";
 
@@ -26,14 +33,17 @@ const DetailsProvider: React.FunctionComponent<{
   const handleGetMovieDetails = async () => {
     if (id) {
       await getMovieDetailsService(parseInt(id))
-        .then((response) => actions.handleSetDetails(response.data))
+        .then((response) => {
+          actions.handleSetDetails(response.data);
+          actions.handleToggleDetailsLoading();
+        })
         .catch((error) => error);
     }
   };
 
   useEffect(() => {
     handleGetMovieDetails();
-  }, [id]);
+  }, []);
 
   return (
     <DetailsContext.Provider
@@ -55,5 +65,15 @@ export const useDetailsContext = (): DetailsContextType => {
 
   return context;
 };
+
+export function withDetailsContext(Component: ComponentType) {
+  return function WrapperComponent(props: ComponentProps<any>): JSX.Element {
+    return (
+      <DetailsProvider>
+        <Component {...props} />
+      </DetailsProvider>
+    );
+  };
+}
 
 export default DetailsProvider;

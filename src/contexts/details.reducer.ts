@@ -6,7 +6,7 @@ export enum MoviesTypes {
 }
 
 export const detailsInitialState = {
-  detailsIsLoading: false,
+  detailsIsLoading: true,
   details: null,
 };
 
@@ -25,7 +25,7 @@ export const allActions = (dispatch: DispatchType) => ({
 function reducer(state = detailsInitialState, action: Actions): any {
   switch (action.type) {
     case MoviesTypes.DETAILS_LOADING:
-      return { ...state, contentIsLoading: !state.detailsIsLoading };
+      return { ...state, detailsIsLoading: false };
     case MoviesTypes.SET_DETAILS:
       return { ...state, details: action.payload };
 
