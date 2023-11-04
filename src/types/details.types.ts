@@ -7,6 +7,12 @@ export interface ICast {
   character: string;
 }
 
+export interface ICrew {
+  id: number;
+  original_name: string;
+  job: string;
+}
+
 export interface IVideo {
   id: string;
   name: string;
@@ -22,10 +28,12 @@ export interface IProductionCompanie {
 
 export interface IReleaseDate {
   certification: string;
+  release_date: string;
 }
 
 export interface ICredits {
   cast: ICast[];
+  crew: ICrew[];
 }
 
 export interface IVideos {
@@ -41,12 +49,13 @@ export interface IReleaseDates {
   results: [
     {
       iso_3166_1: string;
-      releaseDates: IReleaseDate[];
+      release_dates: IReleaseDate[];
     }
   ];
 }
 
 export interface IDetails {
+  original_title: string;
   poster_path: string;
   release_date: string;
   genres: IGenre[];
