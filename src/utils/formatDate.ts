@@ -1,5 +1,11 @@
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
-export default (date: string) =>
+export const formatDate = (date: string) =>
+  format(new Date(date), "dd/MM/yyyy", { locale: ptBR });
+
+export const formatDateYear = (date: string) =>
+  format(new Date(date), "yyyy", { locale: ptBR });
+
+export const formatDateToText = (date: string) =>
   format(new Date(date), "dd MMM yyyy", { locale: ptBR });
