@@ -87,6 +87,7 @@ const MoviesProvider: React.FunctionComponent<{
 
     actions.handleSetMovies(response.data.results);
     actions.handleSetFilter(FILTER.MAXPAGES, totalPages);
+    actions.handleToggleContentLoading();
   };
 
   // Services
@@ -97,6 +98,7 @@ const MoviesProvider: React.FunctionComponent<{
   };
 
   const handleGetPopularMovies = async () => {
+    actions.handleToggleContentLoading();
     await getPopularMoviesServices(parseInt(page))
       .then(handleGetSuccess)
       .catch((error) => error);
@@ -104,6 +106,7 @@ const MoviesProvider: React.FunctionComponent<{
 
   const handleGetMoviesByGenres = async () => {
     if (genres) {
+      actions.handleToggleContentLoading();
       await getMoviesByGenresService(genres.join(","), parseInt(page))
         .then(handleGetSuccess)
         .catch((error) => error);
