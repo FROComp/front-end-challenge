@@ -50,8 +50,11 @@ export const DetailsContent = styled.div`
   flex-direction: column;
   height: 100%;
   max-width: 900px;
+  min-width: 900px;
 
   @media (max-width: 768px) {
+    max-width: 100%;
+    min-width: 100%;
     width: 100%;
   }
 `;

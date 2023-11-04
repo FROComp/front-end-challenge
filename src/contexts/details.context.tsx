@@ -33,7 +33,7 @@ const DetailsProvider: React.FunctionComponent<{
 
   useEffect(() => {
     handleGetMovieDetails();
-  }, []);
+  }, [id]);
 
   return (
     <DetailsContext.Provider

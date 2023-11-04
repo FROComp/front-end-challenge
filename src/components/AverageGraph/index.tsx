@@ -1,5 +1,7 @@
 import React from "react";
 
+import colors from "styles/colors";
+
 import * as S from "./styles";
 
 interface IAverage {
@@ -14,6 +16,14 @@ const AverageGraph: React.FC<IAverage> = ({ percentage }) => {
   const dashArray = radius * Math.PI * 2;
   const dashOffset = dashArray - (dashArray * percentage) / 100;
 
+  const handleColor = () => {
+    if (percentage < 33) return colors.red;
+    if (percentage > 33 && percentage < 66) return colors.yellow;
+    return colors.green;
+  };
+
+  const color = handleColor();
+
   return (
     <S.Wrapper>
       <svg width={sqSize} height={sqSize} viewBox={viewBox}>
@@ -24,6 +34,7 @@ const AverageGraph: React.FC<IAverage> = ({ percentage }) => {
           strokeWidth={`${strokeWidth}px`}
         />
         <S.CircleProgress
+          $color={color}
           cx={sqSize / 2}
           cy={sqSize / 2}
           r={radius}
@@ -34,7 +45,13 @@ const AverageGraph: React.FC<IAverage> = ({ percentage }) => {
             strokeDashoffset: dashOffset,
           }}
         />
-        <S.ProgressText x="50%" y="50%" dy=".3em" textAnchor="middle">
+        <S.ProgressText
+          $color={color}
+          x="50%"
+          y="50%"
+          dy=".3em"
+          textAnchor="middle"
+        >
           {`${percentage}%`}
         </S.ProgressText>
       </svg>

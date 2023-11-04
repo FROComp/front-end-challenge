@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { formatDateToText } from "utils/formatDate";
 
 import * as S from "./styles";
+import posterByPathUrl from "utils/posterByPathUrl";
 
 interface IMovieCardProps {
   id: number;
@@ -21,16 +22,13 @@ const MovieCard: React.FC<IMovieCardProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  const handleGetMoviePosterUrl = (posterPath: string): string =>
-    `${import.meta.env.VITE_IMAGE_API_URL}/${posterPath}`;
-
   const handleDetails = () => {
     navigate({
       pathname: `details/${id}`,
     });
   };
 
-  const image = handleGetMoviePosterUrl(poster);
+  const image = posterByPathUrl(poster);
 
   return (
     <S.Box onClick={handleDetails}>

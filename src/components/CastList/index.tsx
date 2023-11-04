@@ -1,72 +1,20 @@
 import React from "react";
 
+import { useDetailsContext } from "contexts/details.context";
+
 import CastCard from "components/CastCard";
 
 import * as S from "./styles";
 
-const casts = [
-  {
-    id: 1,
-    profile_path: "/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg",
-    original_name: "Ryan Reynolds",
-    character: "Wade Wilson / Deadpool",
-  },
-  {
-    id: 2,
-    profile_path: "/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg",
-    original_name: "Ryan Reynolds",
-    character: "Wade Wilson / Deadpool",
-  },
-  {
-    id: 3,
-    profile_path: "/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg",
-    original_name: "Ryan Reynolds",
-    character: "Wade Wilson / Deadpool",
-  },
-  {
-    id: 4,
-    profile_path: "/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg",
-    original_name: "Ryan Reynolds",
-    character: "Wade Wilson / Deadpool",
-  },
-  {
-    id: 5,
-    profile_path: "/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg",
-    original_name: "Ryan Reynolds",
-    character: "Wade Wilson / Deadpool",
-  },
-  {
-    id: 6,
-    profile_path: "/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg",
-    original_name: "Ryan Reynolds",
-    character: "Wade Wilson / Deadpool",
-  },
-  {
-    id: 7,
-    profile_path: "/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg",
-    original_name: "Ryan Reynolds",
-    character: "Wade Wilson / Deadpool",
-  },
-  {
-    id: 8,
-    profile_path: "/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg",
-    original_name: "Ryan Reynolds",
-    character: "Wade Wilson / Deadpool",
-  },
-  {
-    id: 9,
-    profile_path: "/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg",
-    original_name: "Ryan Reynolds",
-    character: "Wade Wilson / Deadpool",
-  },
-];
-
 const CastList: React.FC = () => {
+  const { details } = useDetailsContext();
+
   return (
     <S.Wrapper>
       <S.Title>Elenco original</S.Title>
+
       <S.CardsWrapper>
-        {casts.map((cast) => (
+        {details?.credits?.cast?.map((cast) => (
           <CastCard
             key={cast.id}
             profile_path={cast.profile_path}

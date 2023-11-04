@@ -3,6 +3,10 @@ import colors from "styles/colors";
 
 import { spacingInlineXs, fontSizeXs } from "styles/tokens";
 
+interface IAverageGraph {
+  $color: string;
+}
+
 export const Wrapper = styled.div`
   align-items: center;
   display: flex;
@@ -14,15 +18,15 @@ export const CircleBackground = styled.circle`
   fill: rgba(255, 255, 255, 0.1);
 `;
 
-export const CircleProgress = styled.circle`
+export const CircleProgress = styled.circle<IAverageGraph>`
   fill: none;
-  stroke: ${colors.green};
+  stroke: ${(props) => props.$color};
   stroke-linecap: round;
   stroke-linejoin: round;
 `;
 
-export const ProgressText = styled.text`
-  fill: ${colors.green};
+export const ProgressText = styled.text<IAverageGraph>`
+  fill: ${(props) => props.$color};
   font-size: ${fontSizeXs};
   font-weight: bold;
 `;
