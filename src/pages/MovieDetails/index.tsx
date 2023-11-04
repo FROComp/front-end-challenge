@@ -1,5 +1,7 @@
 import React from "react";
 
+import DetailsProvider from "contexts/details.context";
+
 import Header from "components/Header";
 import DetailsBanner from "components/DetailsBanner";
 import CastList from "components/CastList";
@@ -10,13 +12,15 @@ import * as S from "./styles";
 
 const MoviesDetails: React.FC = () => {
   return (
-    <S.Wrapper>
-      <Header />
-      <DetailsBanner />
-      <CastList />
-      <TrailerMovie />
-      <RecommendationsList />
-    </S.Wrapper>
+    <DetailsProvider>
+      <S.Wrapper>
+        <Header />
+        <DetailsBanner />
+        <CastList />
+        <TrailerMovie />
+        <RecommendationsList />
+      </S.Wrapper>
+    </DetailsProvider>
   );
 };
 

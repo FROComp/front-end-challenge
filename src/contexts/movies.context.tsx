@@ -4,10 +4,11 @@ import { AxiosResponse } from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import moviesReducer, {
-  MoviesContextType,
   allActions,
   moviesInitialState,
 } from "contexts/movies.reducer";
+
+import { MoviesContextType } from "types/movie.types";
 
 import { getGenrersService } from "services/genres.service";
 import {

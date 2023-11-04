@@ -1,12 +1,5 @@
 import axios, { AxiosResponse } from "api/axios.instante";
 
-// https://www.npmjs.com/package/react-youtube
-
-// credits -> https://api.themoviedb.org/3/movie/{movie_id}/credits
-// recommended -> https://api.themoviedb.org/3/movie/{movie_id}/recommendations
-// videos -> https://api.themoviedb.org/3/movie/{movie_id}/videos
-// release -> https://api.themoviedb.org/3/movie/{movie_id}/release_dates
-
 export const getPopularMoviesServices = (
   page: number = 1
 ): Promise<AxiosResponse<any>> =>
@@ -20,4 +13,9 @@ export const getMoviesByGenresService = (
 
 export const getMovieDetailsService = (
   movieId: number
-): Promise<AxiosResponse<any>> => axios.get(`/movie/${movieId}`);
+): Promise<AxiosResponse<any>> =>
+  axios.get(`/movie/${movieId}`, {
+    params: {
+      append_to_response: "credits,recommendations,videos,release_dates",
+    },
+  });
