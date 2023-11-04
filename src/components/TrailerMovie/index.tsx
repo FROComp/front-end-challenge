@@ -19,7 +19,7 @@ const TrailerMovie: React.FC = () => {
 
   return (
     <S.Wrapper>
-      <S.Title>Elenco original</S.Title>
+      <S.Title>Trailer</S.Title>
       <S.PlayerBoxWeb>
         <Youtube videoId={youtubeID} opts={optsWeb} />
       </S.PlayerBoxWeb>
