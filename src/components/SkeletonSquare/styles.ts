@@ -3,6 +3,8 @@ import styled, { keyframes } from "styled-components";
 interface ISquareProps {
   $width: string;
   $height: string;
+  $widthSm?: string;
+  $heightSm?: string;
 }
 
 const loading = keyframes`
@@ -22,4 +24,9 @@ export const Square = styled.div<ISquareProps>`
   animation: ${loading} 2s infinite ease-in-out;
   border-radius: 8px;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    width: ${(props) => props.$widthSm};
+    height: ${(props) => props.$heightSm};
+  }
 `;
