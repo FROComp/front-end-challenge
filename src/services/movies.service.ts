@@ -1,8 +1,11 @@
 import axios, { AxiosResponse } from "api/axios.instante";
 
-// APIS -> cast, recommendations, videos
-
 // https://www.npmjs.com/package/react-youtube
+
+// credits -> https://api.themoviedb.org/3/movie/{movie_id}/credits
+// recommended -> https://api.themoviedb.org/3/movie/{movie_id}/recommendations
+// videos -> https://api.themoviedb.org/3/movie/{movie_id}/videos
+// release -> https://api.themoviedb.org/3/movie/{movie_id}/release_dates
 
 export const getPopularMoviesServices = (
   page: number = 1
