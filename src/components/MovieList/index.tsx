@@ -1,14 +1,21 @@
 import React from "react";
 
-import { useMoviesContext } from "contexts/movies.context";
-
 import MovieCard from "components/MovieCard";
 
 import * as S from "./styles";
 
-const MovieList: React.FC = () => {
-  const { movies } = useMoviesContext();
+interface IMovie {
+  id: number;
+  poster_path: string;
+  original_title: string;
+  release_date: string;
+}
 
+interface IMovieListProps {
+  movies: IMovie[];
+}
+
+const MovieList: React.FC<IMovieListProps> = ({ movies }) => {
   return (
     <S.Wrapper>
       {movies.map((movie) => (

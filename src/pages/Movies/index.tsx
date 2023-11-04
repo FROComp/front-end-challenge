@@ -4,7 +4,7 @@ import MoviesProvider from "contexts/movies.context";
 
 import Header from "components/Header";
 import FilterBanner from "components/FilterBanner";
-import MovieList from "components/MovieList";
+import MovieBox from "./components/MoviesBox";
 import Pagination from "components/Pagination";
 
 import * as S from "./styles";
@@ -15,7 +15,7 @@ const Movies: React.FC = () => {
       <S.Wrapper>
         <Header />
         <FilterBanner />
-        <MovieList />
+        <MovieBox />
         <Pagination />
       </S.Wrapper>
     </MoviesProvider>
