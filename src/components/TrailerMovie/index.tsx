@@ -2,10 +2,22 @@ import React from "react";
 
 import Youtube from "react-youtube";
 
+import { useDetailsContext } from "contexts/details.context";
+
 import * as S from "./styles";
 
 const TrailerMovie: React.FC = () => {
-  const youtubeID = "Q9X-bAE8KTc"; //key
+  const { details } = useDetailsContext();
+
+  const handleGetYtKey = () => {
+    const videos = details?.videos?.results;
+
+    if (videos?.length) return videos[0].key;
+
+    return "";
+  };
+
+  const youtubeID = handleGetYtKey();
 
   const optsWeb = {
     height: "510",
@@ -18,16 +30,20 @@ const TrailerMovie: React.FC = () => {
   };
 
   return (
-    <S.Wrapper>
-      <S.Title>Trailer</S.Title>
-      <S.PlayerBoxWeb>
-        <Youtube videoId={youtubeID} opts={optsWeb} />
-      </S.PlayerBoxWeb>
+    <>
+      {youtubeID && (
+        <S.Wrapper>
+          <S.Title>Trailer</S.Title>
+          <S.PlayerBoxWeb>
+            <Youtube videoId={youtubeID} opts={optsWeb} />
+          </S.PlayerBoxWeb>
 
-      <S.PlayerMobile>
-        <Youtube videoId={youtubeID} opts={optsMobile} />
-      </S.PlayerMobile>
-    </S.Wrapper>
+          <S.PlayerMobile>
+            <Youtube videoId={youtubeID} opts={optsMobile} />
+          </S.PlayerMobile>
+        </S.Wrapper>
+      )}
+    </>
   );
 };
 
