@@ -19,6 +19,8 @@ export type IMovie = {
   poster_path: string;
 };
 
+export type IMetas = { name: string; content: string }[];
+
 export type MoviesContextType = {
   contentIsLoading: boolean;
   moviesIsLoading: boolean;
