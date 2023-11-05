@@ -25,7 +25,7 @@ const DetailsBanner: React.FC = () => {
 
         <S.DetailsTeamBox>
           {crew?.map((crew) => (
-            <S.DetailsTeam>
+            <S.DetailsTeam key={crew.id}>
               <S.DetailsTeamName>{crew.original_name}</S.DetailsTeamName>
               <S.DetailsTeamRole>{crew.job}</S.DetailsTeamRole>
             </S.DetailsTeam>

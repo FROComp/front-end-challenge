@@ -17,6 +17,7 @@ import moviesReducer, {
 import { DetailsContextType } from "types/details.types";
 
 import { getMovieDetailsService } from "services/movies.service";
+import { detailsMetas } from "constants/metas";
 
 export const DetailsContext =
   createContext<DetailsContextType>(detailsInitialState);
@@ -50,6 +51,7 @@ const DetailsProvider: React.FunctionComponent<{
       value={{
         ...state,
         ...actions,
+        metas: detailsMetas,
       }}
     >
       {children}

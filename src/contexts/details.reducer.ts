@@ -7,6 +7,7 @@ export enum MoviesTypes {
 
 export const detailsInitialState = {
   detailsIsLoading: true,
+  metas: [],
   details: null,
 };
 

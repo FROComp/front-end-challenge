@@ -1,4 +1,4 @@
-import { DispatchType, Actions, IGenre, IMovie } from "./movie.types";
+import { DispatchType, Actions, IGenre, IMovie, IMetas } from "./movie.types";
 
 export interface ICast {
   id: number;
@@ -71,6 +71,7 @@ export interface IDetails {
 
 export type DetailsContextType = {
   detailsIsLoading: boolean;
+  metas: IMetas;
   details: IDetails | null;
 };
 

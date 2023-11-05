@@ -40,12 +40,6 @@ const useDetailsBanner = () => {
     const genres = handleGetGenres();
     const duration = handleGetDuration();
 
-    `${
-      release?.release_date
-        ? `${formatDate(release?.release_date || "")} •`
-        : ""
-    }`;
-
     return `${
       release?.certification ? `${release?.certification} anos •` : ""
     } ${
