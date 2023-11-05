@@ -37,7 +37,7 @@ const MovieCard: React.FC<IMovieCardProps> = ({
       </S.ImageContent>
       <S.TextContent>
         <S.Title>{title}</S.Title>
-        <S.ReleaseDate>{formatDateToText(release)}</S.ReleaseDate>
+        {release && <S.ReleaseDate>{formatDateToText(release)}</S.ReleaseDate>}
       </S.TextContent>
     </S.Box>
   );
