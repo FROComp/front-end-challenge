@@ -1,7 +1,5 @@
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
-
 import { formatDateToText } from "utils/formatDate";
 
 import * as S from "./styles";
@@ -12,6 +10,7 @@ interface IMovieCardProps {
   poster: string;
   title: string;
   release: string;
+  incompleteNavigate?: boolean;
 }
 
 const MovieCard: React.FC<IMovieCardProps> = ({
@@ -19,19 +18,12 @@ const MovieCard: React.FC<IMovieCardProps> = ({
   poster,
   title,
   release,
+  incompleteNavigate,
 }) => {
-  const navigate = useNavigate();
-
-  const handleDetails = () => {
-    navigate({
-      pathname: `details/${id}`,
-    });
-  };
-
   const image = posterByPathUrl(poster);
 
   return (
-    <S.Box onClick={handleDetails}>
+    <S.Box href={incompleteNavigate ? `${id}` : `details/${id}`}>
       <S.ImageContent>
         <img src={image} alt="Imagem do filme" loading="lazy" />
       </S.ImageContent>

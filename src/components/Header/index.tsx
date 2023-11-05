@@ -7,7 +7,9 @@ import * as S from "./styles";
 const Header: React.FC = () => {
   return (
     <S.Wrapper>
-      <img src={logo} alt="Logo do site" />
+      <a href="/">
+        <img src={logo} alt="Logo do site" />
+      </a>
     </S.Wrapper>
   );
 };
