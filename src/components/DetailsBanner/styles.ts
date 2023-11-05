@@ -16,7 +16,7 @@ import {
   fontWeightRegular,
 } from "styles/tokens";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.article`
   background-color: ${colors.red};
   display: flex;
   justify-content: center;
@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
   padding: 72px 112px;
   width: 100%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     flex-direction: column;
     justify-content: center;
     padding: ${spacingInlineLg} ${spacingInlineXs};
@@ -38,7 +38,7 @@ export const Poster = styled.img`
   margin-bottom: -120px;
   width: 383px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     height: 279px;
     margin-bottom: 0;
     width: 186px;

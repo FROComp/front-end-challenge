@@ -11,7 +11,7 @@ const FilterBar: React.FC = () => {
 
   return (
     <S.Wrapper>
-      <S.Label>Filtre por:</S.Label>
+      {genres.length > 0 && <S.Label>Filtre por:</S.Label>}
       <S.ButtonsContainer>
         {genres.map((genre) => (
           <FilterButton

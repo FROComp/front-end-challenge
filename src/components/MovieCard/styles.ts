@@ -3,12 +3,13 @@ import colors from "styles/colors";
 
 import { fontSizeXs, spacingInlineSm, fontWeightBold } from "styles/tokens";
 
-export const Box = styled.div`
+export const Box = styled.a`
   background-color: ${colors.background};
   cursor: pointer;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  text-decoration: none;
   width: 100%;
 `;
 
