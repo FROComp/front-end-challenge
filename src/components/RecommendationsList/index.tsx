@@ -16,7 +16,7 @@ const RecommendationsList: React.FC = () => {
       {movies.length > 0 && (
         <>
           <S.Title>Recomendações</S.Title>
-          <MovieList movies={movies} />{" "}
+          <MovieList incompleteNavigate movies={movies} />{" "}
         </>
       )}
     </>

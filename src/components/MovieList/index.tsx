@@ -12,10 +12,14 @@ interface IMovie {
 }
 
 interface IMovieListProps {
+  incompleteNavigate?: boolean;
   movies: IMovie[];
 }
 
-const MovieList: React.FC<IMovieListProps> = ({ movies }) => {
+const MovieList: React.FC<IMovieListProps> = ({
+  incompleteNavigate,
+  movies,
+}) => {
   return (
     <S.Wrapper>
       {movies.map((movie) => (
@@ -25,6 +29,7 @@ const MovieList: React.FC<IMovieListProps> = ({ movies }) => {
           poster={movie.poster_path}
           title={movie.original_title}
           release={movie.release_date}
+          incompleteNavigate={incompleteNavigate}
         />
       ))}
     </S.Wrapper>
