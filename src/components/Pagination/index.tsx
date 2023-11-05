@@ -23,7 +23,7 @@ const Pagination: React.FC = () => {
       return Array.from(
         { length: newStart },
         (_, index) => newStart + index
-      ).slice(0, range);
+      ).slice(0, range + 1);
     }
 
     return Array.from(
@@ -39,34 +39,41 @@ const Pagination: React.FC = () => {
 
   return (
     <S.Wrapper>
-      {filters.page > 2 && (
-        <S.AroundButton onClick={() => handleChangePage(1)}>
-          Primeira
-        </S.AroundButton>
-      )}
-      {filters.page > 1 && (
-        <S.PaginationButton onClick={() => handleChangePage(filters.page - 1)}>
-          <img src={arrowLeft} alt="Próxima anterior" />
-        </S.PaginationButton>
-      )}
-      {pages.map((page) => (
-        <S.PaginationButton
-          $isSelected={filters.page === page}
-          onClick={() => handleChangePage(page)}
-        >
-          {page}
-        </S.PaginationButton>
-      ))}
-      {filters.page < filters.maxPages && (
-        <S.PaginationButton onClick={() => handleChangePage(filters.page + 1)}>
-          <img src={arrowRight} alt="Próxima página" />
-        </S.PaginationButton>
-      )}
-      {filters.page + 2 < filters.maxPages && (
-        <S.AroundButton onClick={() => handleChangePage(filters.maxPages)}>
-          Última
-        </S.AroundButton>
-      )}
+      <S.PaginationButtonsBox>
+        {filters.page > 2 && (
+          <S.AroundButton onClick={() => handleChangePage(1)}>
+            Primeira
+          </S.AroundButton>
+        )}
+        {filters.page > 1 && (
+          <S.PaginationButton
+            onClick={() => handleChangePage(filters.page - 1)}
+          >
+            <img src={arrowLeft} alt="Próxima anterior" />
+          </S.PaginationButton>
+        )}
+        {pages.map((page, index) => (
+          <S.PaginationButton
+            key={page + index}
+            $isSelected={filters.page === page}
+            onClick={() => handleChangePage(page)}
+          >
+            {page}
+          </S.PaginationButton>
+        ))}
+        {filters.page < filters.maxPages && (
+          <S.PaginationButton
+            onClick={() => handleChangePage(filters.page + 1)}
+          >
+            <img src={arrowRight} alt="Próxima página" />
+          </S.PaginationButton>
+        )}
+        {filters.page + 2 < filters.maxPages && (
+          <S.AroundButton onClick={() => handleChangePage(filters.maxPages)}>
+            Última
+          </S.AroundButton>
+        )}
+      </S.PaginationButtonsBox>
     </S.Wrapper>
   );
 };
