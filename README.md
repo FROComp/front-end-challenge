@@ -36,7 +36,7 @@ As seguintes variáveis devem ser preenchidas
 ```bash
   VITE_API_URL=https://api.themoviedb.org/3
   VITE_IMAGE_API_URL=http://image.tmdb.org/t/p/w500
-  VITE_API_TOKEN=TMDB_API_KEY
+  VITE_API_TOKEN=
   VITE_API_LANGUAGE="pt-BR"
 ```
 
