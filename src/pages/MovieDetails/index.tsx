@@ -5,6 +5,7 @@ import {
   withDetailsContext,
 } from "contexts/details.context";
 
+import SEO from "components/SEO";
 import Header from "components/Header";
 import DetailsBanner from "components/DetailsBanner";
 import CastList from "components/CastList";
@@ -16,10 +17,11 @@ import MovieDetailsSkeleton from "./components/MovieDetailsSkeleton";
 import * as S from "./styles";
 
 const MoviesDetails: React.FC = () => {
-  const { detailsIsLoading } = useDetailsContext();
+  const { detailsIsLoading, metas } = useDetailsContext();
 
   return (
     <>
+      <SEO title="TMDB Videos" metas={metas} />
       {detailsIsLoading ? (
         <MovieDetailsSkeleton />
       ) : (
