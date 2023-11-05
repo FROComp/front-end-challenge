@@ -8,4 +8,4 @@ export const formatDateYear = (date: string) =>
   format(new Date(date), "yyyy", { locale: ptBR });
 
 export const formatDateToText = (date: string) =>
-  format(new Date(date), "dd MMM yyyy", { locale: ptBR });
+  format(parseISO(date), "dd MMM yyyy", { locale: ptBR });
